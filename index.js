@@ -10,6 +10,7 @@ import {Provider} from 'react-redux';
 import DashboardScreen from './src/screens/DashboardScreen';
 import StatisticsScreen from './src/screens/StatisticsScreen';
 // import {name as appName} from './app.json';
+import home from './src/assets/white_home_icon.png';
 
 // AppRegistry.registerComponent(appName, () => App);
 
@@ -40,65 +41,22 @@ Navigation.registerComponent(
   () => DashboardScreen,
 );
 
-Navigation.events().registerAppLaunchedListener(() => {
+Navigation.events().registerAppLaunchedListener(async () => {
   Navigation.setRoot({
     root: {
-      topBar: {
-        visible: false,
-        drawBehind: true,
-        animate: false,
-      },
-      bottomTabs: {
+      stack: {
         children: [
           {
-            stack: {
-              children: [
-                {
-                  component: {
-                    name: 'DashboardScreen',
-                  },
-                },
-              ],
+            component: {
+              name: 'DashboardScreen',
               options: {
                 topBar: {
+                  visible: false,
+                  drawBehind: true,
+                  animate: false,
+                },
+                bottomTabs: {
                   visible: 'false',
-                  title: {
-                    text: 'StatisticsScreen',
-                  },
-                },
-                bottomTab: {
-                  text: 'Screen 1',
-                  // icon: Icon.getImageSource('user', 20, 'red'),
-                  badge: '1',
-                  options: {
-                    backgroundColor: '#282A34',
-                  },
-                },
-              },
-            },
-          },
-          {
-            stack: {
-              children: [
-                {
-                  component: {
-                    name: 'DashboardScreen',
-                  },
-                },
-              ],
-              options: {
-                topBar: {
-                  visible: 'false',
-                  title: {
-                    text: 'DashboardScreen',
-                  },
-                },
-                bottomTab: {
-                  text: 'Screen 2',
-                  badge: '2',
-                  options: {
-                    backgroundColor: '#282A34',
-                  },
                 },
               },
             },
