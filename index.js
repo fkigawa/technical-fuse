@@ -70,6 +70,9 @@ Navigation.events().registerAppLaunchedListener(() => {
                   text: 'Screen 1',
                   // icon: Icon.getImageSource('user', 20, 'red'),
                   badge: '1',
+                  options: {
+                    backgroundColor: '#282A34',
+                  },
                 },
               },
             },
@@ -93,6 +96,9 @@ Navigation.events().registerAppLaunchedListener(() => {
                 bottomTab: {
                   text: 'Screen 2',
                   badge: '2',
+                  options: {
+                    backgroundColor: '#282A34',
+                  },
                 },
               },
             },

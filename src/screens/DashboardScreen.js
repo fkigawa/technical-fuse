@@ -23,6 +23,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as userSelectors from '../store/user/selectors';
 import * as userActions from '../store/user/actions';
 
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from 'react-native-responsive-screen';
+
 const DashboardScreen = props => {
   const dispatch = useDispatch();
 
@@ -58,7 +65,7 @@ const DashboardScreen = props => {
     setCards(
       cryptos.map((unit, index) => {
         return (
-          <View key={unit.id + index}>
+          <View key={unit.id + index} style={styles.trendingCardContainer}>
             <TouchableOpacity
               onPress={() => {
                 pushToStatisticScreen(unit);
@@ -99,16 +106,32 @@ const DashboardScreen = props => {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <View style={styles.topHeaderContainer}>
-          <Text style={styles.red}>Current balance</Text>
-          {/* two icons */}
+          <Text style={styles.topHeaderText}>Current balance</Text>
+          <View style={styles.topHeaderIconContainer}>
+            <View style={styles.topHeaderIcon}>
+              <MaterialCommunityIcons
+                name="robot-excited-outline"
+                size={styles.topIcon.size}
+                color={styles.topIcon.color}
+              />
+            </View>
+            <View style={styles.topHeaderIcon}>
+              <MaterialCommunityIcons
+                name="bell-badge"
+                size={styles.topIcon.size}
+                color={styles.topIcon.color}
+              />
+            </View>
+          </View>
         </View>
         <View style={styles.topBodyContainer}>
-          <Text style={styles.red}>$7,540.00</Text>
+          <Text style={styles.topHeaderNumber}>$7,540.00</Text>
           {/* drop down currency */}
         </View>
       </View>
+      <View style={styles.line}></View>
       <View style={styles.bodyContainer}>
-        <Text style={styles.red}>Trading</Text>
+        <Text style={styles.bodyHeaderText}>Trending</Text>
         <ScrollView horizontal={true}>{cards}</ScrollView>
       </View>
       <View style={styles.bottomContainer}>
@@ -122,22 +145,64 @@ const DashboardScreen = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#24242B',
   },
   topContainer: {
-    flex: 1,
-    paddingTop: 60,
-    paddingLeft: 20,
+    height: heightPercentageToDP('20%'),
+    paddingTop: heightPercentageToDP('8%'),
+    paddingLeft: widthPercentageToDP('4.5%'),
   },
   topHeaderContainer: {
     flexDirection: 'row',
+  },
+  topHeaderText: {
+    paddingTop: heightPercentageToDP('.75%'),
+    fontSize: heightPercentageToDP('2%'),
+    color: '#777881',
+    fontWeight: 'bold',
+  },
+  topHeaderIconContainer: {
+    flexDirection: 'row',
+    paddingLeft: widthPercentageToDP('30.5%'),
+  },
+  topHeaderIcon: {
+    paddingLeft: widthPercentageToDP('5.5%'),
+  },
+  topIcon: {
+    size: heightPercentageToDP('3.5%'),
+    color: 'white',
+  },
+  topHeaderNumber: {
+    fontSize: heightPercentageToDP('3%'),
+    color: 'white',
+    fontWeight: 'bold',
   },
   topBodyContainer: {
     flexDirection: 'row',
     paddingTop: 20,
   },
+  line: {
+    height: heightPercentageToDP('.2%'),
+    width: widthPercentageToDP('90%'),
+    marginLeft: widthPercentageToDP('5%'),
+    backgroundColor: '#2E3038',
+  },
+
   bodyContainer: {
-    flex: 2,
-    paddingLeft: 20,
+    height: heightPercentageToDP('40%'),
+    paddingTop: heightPercentageToDP('1.5%'),
+    paddingLeft: widthPercentageToDP('4.5%'),
+  },
+  bodyHeaderText: {
+    fontSize: heightPercentageToDP('3.5%'),
+    color: 'white',
+  },
+  trendingCardContainer: {
+    height: heightPercentageToDP('20%'),
+    width: widthPercentageToDP('20%'),
+    marginTop: heightPercentageToDP('1.5%'),
+    marginLeft: widthPercentageToDP('4.5%'),
+    backgroundColor: '#363842',
   },
   bottomContainer: {
     flex: 2,
