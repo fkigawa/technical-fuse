@@ -10,7 +10,6 @@ import {Provider} from 'react-redux';
 import DashboardScreen from './src/screens/DashboardScreen';
 import StatisticsScreen from './src/screens/StatisticsScreen';
 // import {name as appName} from './app.json';
-import home from './src/assets/white_home_icon.png';
 
 // AppRegistry.registerComponent(appName, () => App);
 
